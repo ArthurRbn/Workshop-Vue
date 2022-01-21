@@ -46,13 +46,7 @@ export default {
   },
   methods: {
     addNewTodo() {
-      if (this.newTodoText.length > 0) {
-        this.todos.push({
-          title: this.newTodoText,
-          done: false
-        })
-        this.newTodoText = ''
-      }
+      // Add a new Todo to this.todos
     }
   }
 }

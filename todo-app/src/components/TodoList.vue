@@ -1,10 +1,10 @@
 <template>
   <div class="sub-container">
     <h2 class="sub-title">
-      Total Todo Count <span class = "badge"> {{ todos.length }} </span>
+      Total Todo Count <span class = "badge"> <!-- display the number of todos --> </span>
     </h2>
     <ul class="list-group">
-      <todo v-on:remove-todo="removeTodo" v-for="todo in todos" :todo.sync="todo" key="todo"></todo>
+      <todo v-on:remove-todo="removeTodo" key="todo">  <!-- use this component to loop over the todos list -->  </todo>
     </ul>
   </div>
 </template>
@@ -20,8 +20,7 @@ export default {
   },
   methods: {
     removeTodo(todo) {
-      const todoIndex = this.todos.indexOf(todo)
-      this.todos.splice(todoIndex, 1)
+      //remove todo from this.todos
     }
   }
 };

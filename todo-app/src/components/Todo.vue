@@ -3,19 +3,19 @@
     <div class="row">
       <div class="todo-container-title">
         <div class="todo-title" v-on:click="activateInEditMode" v-show="!isEditing" >
-          {{ todo.title }}
+          <!-- display the todo's title -->
         </div>
-        <form v-show="isEditing" v-on:submit.prevent="deActivateInEditMode" >
+        <form v-show="isEditing" v-on:submit.prevent="deActivateInEditMode">
           <div class="form-group">
-            <input v-model="todo.title" type="text" class="form-control" >
+            <!-- add an input to edit the todo's title -->
           </div>
         </form>
       </div>
       <div class="todo-infos">
-        <span class="btn btn-default" v-on:click="removeTodo(todo)" style="background-color: lightgray; padding: 3px; border-radius: 2px">remove</span>
-        <span v-if="todo.done" class="bg-success todo-status">Done</span>
-        <span v-else="todo.done" class="bg-danger todo-status">Not Done</span>
-        <input v-model="todo.done" type="checkbox">
+        <span class="btn btn-default todo-rm-btn" v-on:click="removeTodo(todo)">remove</span>
+        <span class="bg-success todo-status">Done</span> <!-- display this span only if the todo is done -->
+        <span class="bg-danger todo-status">Not Done</span> <!-- display this span only if the todo is not finished -->
+        <input v-model="todo.done" type="checkbox"> <!-- add a checkbox to toggle the todo's done property -->
       </div>
     </div>
   </li>
@@ -37,7 +37,7 @@ export default {
       this.isEditing = false
     },
     removeTodo (todo) {
-      this.$emit('remove-todo', todo)
+      // send a signal "remove-todo" with todo as parameter
     }
   }
 }
@@ -47,6 +47,12 @@ export default {
 .todo-title {
   cursor: pointer;
   padding: 6px;
+}
+
+.todo-rm-btn {
+  background-color: lightgray;
+  padding: 3px;
+  border-radius: 2px;
 }
 
 .todo-infos {
